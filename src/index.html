@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Frontend Mentor | Time tracking dashboard</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tailwind.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="index.js"></script>
+  </head>
+  <body
+    class="bg-neutral-very-dark-blue min-h-[100vh] text-neutral-pale-blue px-6 py-16 lg:py-24 lg:px-16"
+  >
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-8">
+      <div class="bg-neutral-dark-blue rounded-xl row-span-2">
+        <div
+          class="bg-primary-blue rounded-xl py-6 px-6 flex items-center gap-4 sm:pb-24 sm:pt-8 sm:flex-col sm:items-start sm:gap-8 sm:h-[82%] lg:h-[70%] font-bold"
+        >
+          <img
+            class="w-16 h-16 border-[#fff] rounded-full border-2 border-solid"
+            src="../images/image-jeremy.png"
+            alt="avatar"
+          />
+
+          <p>
+            Report for
+            <span class="text-2xl sm:text-4xl block font-light text-white"
+              >Jeremy Robson</span
+            >
+          </p>
+        </div>
+        <div
+          class="py-6 px-8 justify-between flex lg:mt-0 lg:flex-col lg:items-start lg:justify-between gap-2"
+        >
+          <button id="daily-btn" class="hover:text-white duration-200">
+            Daily
+          </button>
+          <button
+            id="weekly-btn"
+            class="hover:text-white text-white duration-200"
+          >
+            Weekly
+          </button>
+          <button id="monthly-btn" class="hover:text-white duration-200">
+            Monthly
+          </button>
+        </div>
+      </div>
+      <div
+        class="bg-primary-light-red rounded-xl relative pt-12 sm:pt-14 overflow-hidden z-10"
+      >
+        <img
+          class="absolute right-4 top-[-8px] z-[-1]"
+          src="../images/icon-work.svg"
+          alt=""
+        />
+        <div
+          class="bg-neutral-dark-blue hover:bg-neutral-grayish-blue duration-100 rounded-xl py-6 px-6"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-white">Work</h4>
+            <img
+              class="cursor-pointer"
+              src="../images/icon-ellipsis.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="flex justify-between items-center lg:flex-col lg:items-start lg:gap-2"
+          >
+            <span id="curr-work" class="text-4xl font-light text-white"
+              >32hrs</span
+            >
+            <p>Previous - <span id="prev-work">36hrs</span></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-primary-soft-blue rounded-xl relative pt-12 sm:pt-14 overflow-hidden z-10"
+      >
+        <img
+          class="absolute right-4 top-[-8px] z-[-1]"
+          src="../images/icon-play.svg"
+          alt=""
+        />
+        <div
+          class="bg-neutral-dark-blue hover:bg-neutral-grayish-blue duration-100 rounded-xl py-6 px-6"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-white">Play</h4>
+            <img
+              class="cursor-pointer"
+              src="../images/icon-ellipsis.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="flex justify-between items-center lg:flex-col lg:items-start lg:gap-2"
+          >
+            <span id="curr-play" class="text-4xl font-light text-white"
+              >10hrs</span
+            >
+            <p>Previous - <span id="prev-play">8hrs</span></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-primary-red rounded-xl relative pt-12 sm:pt-14 overflow-hidden z-10"
+      >
+        <img
+          class="absolute right-4 top-[-8px] z-[-1]"
+          src="../images/icon-study.svg"
+          alt=""
+        />
+        <div
+          class="bg-neutral-dark-blue hover:bg-neutral-grayish-blue duration-100 rounded-xl py-6 px-6"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-white">Study</h4>
+            <img
+              class="cursor-pointer"
+              src="../images/icon-ellipsis.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="flex justify-between items-center lg:flex-col lg:items-start lg:gap-2"
+          >
+            <span id="curr-study" class="text-4xl font-light text-white"
+              >4hrs</span
+            >
+            <p>Previous - <span id="prev-study">7hrs</span></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-primary-lime-green rounded-xl relative pt-12 sm:pt-14 overflow-hidden z-10"
+      >
+        <img
+          class="absolute right-4 top-[-8px] z-[-1]"
+          src="../images/icon-exercise.svg"
+          alt=""
+        />
+        <div
+          class="bg-neutral-dark-blue hover:bg-neutral-grayish-blue duration-100 rounded-xl py-6 px-6"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-white">Exercise</h4>
+            <img
+              class="cursor-pointer"
+              src="../images/icon-ellipsis.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="flex justify-between items-center lg:flex-col lg:items-start lg:gap-2"
+          >
+            <span id="curr-exercise" class="text-4xl font-light text-white"
+              >4hrs</span
+            >
+            <p>Previous - <span id="prev-exercise">5hrs</span></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-primary-violet rounded-xl relative pt-12 sm:pt-14 overflow-hidden z-10"
+      >
+        <img
+          class="absolute right-4 top-[-8px] z-[-1]"
+          src="../images/icon-social.svg"
+          alt=""
+        />
+        <div
+          class="bg-neutral-dark-blue hover:bg-neutral-grayish-blue duration-100 rounded-xl py-6 px-6"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-white">Social</h4>
+            <img
+              class="cursor-pointer"
+              src="../images/icon-ellipsis.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="flex justify-between items-center lg:flex-col lg:items-start lg:gap-2"
+          >
+            <span id="curr-social" class="text-4xl font-light text-white"
+              >5hrs</span
+            >
+            <p>Previous - <span id="prev-social">10hrs</span></p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-primary-soft-orange rounded-xl relative pt-12 sm:pt-14 overflow-hidden z-10"
+      >
+        <img
+          class="absolute right-4 top-[-8px] z-[-1]"
+          src="../images/icon-self-care.svg"
+          alt=""
+        />
+        <div
+          class="bg-neutral-dark-blue hover:bg-neutral-grayish-blue duration-100 rounded-xl py-6 px-6"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-white">Self Care</h4>
+            <img
+              class="cursor-pointer"
+              src="../images/icon-ellipsis.svg"
+              alt=""
+            />
+          </div>
+          <div
+            class="flex justify-between items-center lg:flex-col lg:items-start lg:gap-2"
+          >
+            <span id="curr-self-care" class="text-4xl font-light text-white"
+              >2hrs</span
+            >
+            <p>Previous - <span id="prev-self-care">2hrs</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
