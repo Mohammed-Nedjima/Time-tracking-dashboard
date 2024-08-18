@@ -6,18 +6,21 @@ fetch("./data.json")
     return response.json();
   })
   .then((data) => {
-    const currWork = document.getElementById("curr-work");
-    const prevWork = document.getElementById("prev-work");
-    const currPlay = document.getElementById("curr-play");
-    const prevPlay = document.getElementById("prev-play");
-    const currStudy = document.getElementById("curr-study");
-    const prevStudy = document.getElementById("prev-study");
-    const currExercise = document.getElementById("curr-exercise");
-    const prevExercise = document.getElementById("prev-exercise");
-    const currSocial = document.getElementById("curr-social");
-    const prevSocial = document.getElementById("prev-social");
-    const currSelfCare = document.getElementById("curr-self-care");
-    const prevSelfCare = document.getElementById("prev-self-care");
+    const categories = [
+      "Work",
+      "Play",
+      "Study",
+      "Exercise",
+      "Social",
+      "SelfCare",
+    ];
+    categories.forEach((item) => {
+      const curritem = document.getElementById(`curr-${item.toLowerCase()}`);
+      // console.log(curritem);
+      const previtem = document.getElementById(`prev-${item.toLowerCase()}`);
+      // console.log(previtem);
+      const itemData = data.find((e) => e.title === item);
+    });
     const dayilyBtn = document.getElementById("daily-btn");
     const weeklyBtn = document.getElementById("weekly-btn");
     const monthlyBtn = document.getElementById("monthly-btn");
@@ -25,12 +28,15 @@ fetch("./data.json")
     let timeframe = "weekly";
 
     const updateData = (data) => {
-      const workData = data.find((item) => item.title === "Work");
-      const playData = data.find((item) => item.title === "Play");
-      const studyData = data.find((item) => item.title === "Study");
-      const exerciseData = data.find((item) => item.title === "Exercise");
-      const socialData = data.find((item) => item.title === "Social");
-      const selfCareData = data.find((item) => item.title === "Self Care");
+      categories.forEach((item) => {
+        if (item === "SelfCare") {
+          item = "Self Care";
+        } else {
+          item = item.toLowerCase();
+        }
+        const itemData = data.find((e) => e.title === item);
+        console.log(itemData);
+      });
       currWork.textContent = workData.timeframes[timeframe].current + "hrs";
       prevWork.textContent = workData.timeframes[timeframe].previous + "hrs";
       currPlay.textContent = playData.timeframes[timeframe].current + "hrs";
