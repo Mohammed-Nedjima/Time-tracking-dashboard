@@ -12,15 +12,15 @@ fetch("./data.json")
       "Study",
       "Exercise",
       "Social",
-      "SelfCare",
+      "SelfCare"
     ];
-    categories.forEach((item) => {
-      const curritem = document.getElementById(`curr-${item.toLowerCase()}`);
-      // console.log(curritem);
-      const previtem = document.getElementById(`prev-${item.toLowerCase()}`);
-      // console.log(previtem);
-      const itemData = data.find((e) => e.title === item);
-    });
+    // categories.forEach((item) => {
+    //   const curritem = document.getElementById(`curr-${item.toLowerCase()}`);
+    //   // console.log(curritem);
+    //   const previtem = document.getElementById(`prev-${item.toLowerCase()}`);
+    //   // console.log(previtem);
+    //   const itemData = data.find((e) => e.title === item);
+    // });
     const dayilyBtn = document.getElementById("daily-btn");
     const weeklyBtn = document.getElementById("weekly-btn");
     const monthlyBtn = document.getElementById("monthly-btn");
@@ -28,32 +28,23 @@ fetch("./data.json")
     let timeframe = "weekly";
 
     const updateData = (data) => {
-      categories.forEach((item) => {
-        if (item === "SelfCare") {
-          item = "Self Care";
-        } else {
-          item = item.toLowerCase();
-        }
-        const itemData = data.find((e) => e.title === item);
-        console.log(itemData);
+      const activities = [
+        { id: "curr-work", prevId: "prev-work" },
+        { id: "curr-play", prevId: "prev-play" },
+        { id: "curr-study", prevId: "prev-study" },
+        { id: "curr-exercise", prevId: "prev-exercise" },
+        { id: "curr-social", prevId: "prev-social" },
+        { id: "curr-selfcare", prevId: "prev-selfcare" }
+      ];
+
+      activities.forEach((activity, index) => {
+        const currActivity = document.getElementById(activity.id);
+        const prevActivity = document.getElementById(activity.prevId);
+        currActivity.textContent =
+          data[index].timeframes[timeframe].current + "hrs";
+        prevActivity.textContent =
+          data[index].timeframes[timeframe].previous + "hrs";
       });
-      currWork.textContent = workData.timeframes[timeframe].current + "hrs";
-      prevWork.textContent = workData.timeframes[timeframe].previous + "hrs";
-      currPlay.textContent = playData.timeframes[timeframe].current + "hrs";
-      prevPlay.textContent = playData.timeframes[timeframe].previous + "hrs";
-      currStudy.textContent = studyData.timeframes[timeframe].current + "hrs";
-      prevStudy.textContent = studyData.timeframes[timeframe].previous + "hrs";
-      currExercise.textContent =
-        exerciseData.timeframes[timeframe].current + "hrs";
-      prevExercise.textContent =
-        exerciseData.timeframes[timeframe].previous + "hrs";
-      currSocial.textContent = socialData.timeframes[timeframe].current + "hrs";
-      prevSocial.textContent =
-        socialData.timeframes[timeframe].previous + "hrs";
-      currSelfCare.textContent =
-        selfCareData.timeframes[timeframe].current + "hrs";
-      prevSelfCare.textContent =
-        selfCareData.timeframes[timeframe].previous + "hrs";
     };
 
     dayilyBtn.addEventListener("click", () => {
